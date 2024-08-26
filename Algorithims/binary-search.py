@@ -197,8 +197,35 @@ def findMin(nums):
 
     return res
 
-nums = [4, 5, 6, 7, 0, 1, 2]
+# nums = [4, 5, 6, 7, 0, 1, 2]
 
-print(nums)
-print(f"Min Value: {findMin(nums)}")
+# print(nums)
+# print(f"Min Value: {findMin(nums)}")
+
+
+
+#### Find Peaked Element ####
+
+def findPeakedElement(nums):
+
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+
+        mid = (left + right) // 2
+        
+        #left neighbor greater
+        if mid > 0 and nums[mid] < nums[mid - 1]:
+            right = mid - 1
+
+        #right neighbor greater
+        elif mid < len(nums) - 1 and nums[mid] < nums[mid + 1]:
+            left = mid + 1
+        else:
+            return mid
+
+
+nums = [1,2,3,1]
+print(findPeakedElement(nums))
 
